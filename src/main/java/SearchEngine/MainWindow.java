@@ -1,47 +1,182 @@
 package SearchEngine;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 // The main window for the search engine
 // Written by Zachary Willis, 2018
 
-public class MainWindow 
+public class MainWindow extends JFrame
 {
+	private static final long serialVersionUID = 1L;
+	
+	private JLabel searchTitle;
+	
+	private JLabel instructions;
+	private JTextField searchCriteria;
+	private JButton searchButton;
+	
+	private JRadioButton allTerms;
+	private JRadioButton anyTerms;
+	private JRadioButton exactTerms;
+	
+	private JTextArea searchResults;
+	
+	private JButton maintenanceWindow;
+	private JLabel filesIndexed;
+	private JButton aboutButton;
+	
+	public MainWindow()
+	{
+		createView();
+		
+		//Make window exit app on close
+    	setDefaultCloseOperation(EXIT_ON_CLOSE);
+    	setSize(800, 600);
+    	setLocationRelativeTo(null);
+    	setTitle("Spirit Bomb Search Engine");
+    	setResizable(true);
+	}
+	
+	private void createView()
+	{
+		JPanel panelMain = new JPanel();
+    	panelMain.setBorder(new EmptyBorder(10, 10, 10, 10)); // Keeps 10 pixel margins on either side
+    	panelMain.setLayout(new BorderLayout()); // Sets it to border layout instead of flow layout
+    	getContentPane().add(panelMain);
+    	
+    	// North
+    	JPanel panelNorth = new JPanel(new GridBagLayout());
+    	panelMain.add(panelNorth, BorderLayout.NORTH); // Adds the panel to the north of the border layout
+    	
+    	GridBagConstraints c = new GridBagConstraints();
+    	c.gridx = 1;
+    	c.gridy = 0;
+    	c.anchor = GridBagConstraints.BASELINE;
+    	
+    	searchTitle = new JLabel("Search Engine");
+    	panelNorth.add(searchTitle, c);
+    	c.gridy++;
+    	c.gridx = 0;
+    	
+    	c.anchor = GridBagConstraints.LINE_END;
+    	instructions = new JLabel("Search Terms: ");
+    	panelNorth.add(instructions, c);
+    	c.gridx++;
+    	
+    	c.anchor = GridBagConstraints.CENTER;
+    	c.weightx = 1;
+    	c.fill = GridBagConstraints.HORIZONTAL;
+    	searchCriteria = new JTextField(600);
+    	panelNorth.add(searchCriteria, c);
+    	c.gridx++;
+    	
+    	c.anchor = GridBagConstraints.LINE_START;
+    	c.weightx = 0;
+    	c.fill = GridBagConstraints.NONE; // Make the buttons not expand
+    	searchButton = new JButton("Search");
+    	panelNorth.add(searchButton, c);
+    	c.gridx = 0;
+    	c.gridy++;
+    	
+    	c.anchor = GridBagConstraints.CENTER;
+    	c.weightx = 1; // Makes the cell expand horizontally
+    	c.insets.right = 0; // --> makes the buttons stand side by side
+    	c.insets.left = 0; // --> makes the buttons stand side by side
+    	
+    	allTerms = new JRadioButton("All Search Terms");
+    	panelNorth.add(allTerms, c);
+    	c.gridx++;
+    	
+    	anyTerms = new JRadioButton("Any Search Terms");
+    	panelNorth.add(anyTerms, c);
+    	c.gridx++;
+    	
+    	c.anchor = GridBagConstraints.WEST;
+    	exactTerms = new JRadioButton("Exact Phrase Only");
+    	panelNorth.add(exactTerms, c);
+    	//
+    	
+    	// Center
+    	searchResults = new JTextArea();
+    	searchResults.setEditable(false);
+    	searchResults.setLineWrap(true);
+    	searchResults.setWrapStyleWord(true);
+    	JScrollPane scrollPane = new JScrollPane(searchResults); // Creates the searchResults in a scrollable pane
+    	panelMain.add(scrollPane, BorderLayout.CENTER);
+    	//
+    	
+    	// South
+    	JPanel panelSouth = new JPanel();
+    	panelMain.add(panelSouth, BorderLayout.SOUTH);
+    	
+    	maintenanceWindow = new JButton("Maintenance");
+    	panelSouth.add(maintenanceWindow, BorderLayout.WEST);
+    	
+    	filesIndexed = new JLabel("Number of files index: 0");
+    	panelSouth.add(filesIndexed, BorderLayout.CENTER);
+    	
+    	aboutButton = new JButton("About");
+    	aboutButton.addActionListener(new ActionListener() // Lists details about the program
+    			{
+    			    public void actionPerformed(ActionEvent e)
+    			    {
+    			    	AboutWindow.aboutWindowCreate();
+    			    }
+    			});
+    	panelSouth.add(aboutButton, BorderLayout.EAST);
+    	//
+	}
+	
+	public static class AboutWindow extends JFrame
+	{
+		private static final long serialVersionUID = 1L;
+		private JTextArea aboutText;
+		
+		public AboutWindow()
+		{
+		    createView();	
+		    
+		    setDefaultCloseOperation(EXIT_ON_CLOSE);
+	    	setSize(400, 300);
+	    	setLocationRelativeTo(null);
+	    	setTitle("About");
+	    	setResizable(true);
+		}
+		
+		public void createView()
+		{
+			JPanel aboutPanel = new JPanel();
+			getContentPane().add(aboutPanel);
+			
+			aboutText.setText("Search Engine 0.0\n Project for COP-2805C\n Writtey by Team Spirit Bomb\n2018");
+			aboutPanel.add(aboutText);
+		}
+		
+		public static void aboutWindowCreate()
+		{
+			SwingUtilities.invokeLater(new Runnable()
+			{
+				public void run()
+				{
+				new AboutWindow().setVisible(true);
+				}
+			});
+		}
+	}
+	
     public static void main( String[] args )
     {
-        JFrame frame = new JFrame();
-        
-        JPanel panel = new JPanel();
-        panel.setBackground(Color.BLACK);
-        panel.setSize(600, 600);
-        frame.getContentPane().add(panel);
-        
-        JButton button = new JButton("This is a button");
-        panel.add(button); // Add the button to the panel
-        
-        JTextField textField = new JTextField();
-        textField.setPreferredSize(new Dimension(200, 30));
-        panel.add(textField);
-        
-        JButton button2 = new JButton("This button is so long it has to be added on the next line which is because of the FLOW layout.");
-        panel.add(button2);
-        
-        
-        // Sets the window size
-        frame.setSize(new Dimension(800, 600));
-        // Set the start position to center of screen
-        frame.setLocationRelativeTo(null);
-        // Set a default close action
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        // Set the window color
-        frame.setBackground(Color.BLUE);
-        // Set the title
-        frame.setTitle("Search Engine");
-        //Disable resize option
-        frame.setResizable(false);
-        
-        
-        frame.setVisible(true);
+    	SwingUtilities.invokeLater(new Runnable()
+	    {
+		    public void run()
+		    {
+		    	new MainWindow().setVisible(true);
+		    }
+	    });
     }
 }
