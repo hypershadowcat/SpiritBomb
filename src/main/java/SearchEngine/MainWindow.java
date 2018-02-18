@@ -115,17 +115,29 @@ public class MainWindow extends JFrame
     	panelMain.add(panelSouth, BorderLayout.SOUTH);
     	
     	maintenanceWindow = new JButton("Maintenance");
+    	maintenanceWindow.addActionListener(new ActionListener() 
+    	{
+    		public void actionPerformed(ActionEvent e)
+    		{
+    	        MaintenanceWindow maintenance = new MaintenanceWindow();
+    		}
+    	});
     	panelSouth.add(maintenanceWindow, BorderLayout.WEST);
     	
     	filesIndexed = new JLabel("Number of files index: 0");
     	panelSouth.add(filesIndexed, BorderLayout.CENTER);
     	
     	aboutButton = new JButton("About");
-    	aboutButton.addActionListener(new ActionListener() // Lists details about the program
+    	aboutButton.addActionListener(new ActionListener() // Lists details about the program through a show message dialog
     			{
     			    public void actionPerformed(ActionEvent e)
     			    {
-    			    	AboutWindow.aboutWindowCreate();
+    			    	ImageIcon icon = new ImageIcon("src\\main\\java\\search.png");
+    			    	JOptionPane.showMessageDialog(null, "Search Engine 0.0\n" +
+    			    	                                    "Model Solution to COP-2805 Search Engine Project\n" +
+    			    			                            "Written by Craig Anderson, Ihor Panchenko, \n" +
+    			    	                                    "Juliet Mercado, and Zachary Willis",
+    			    	                                    "Search Engine", 1, icon);
     			    }
     			});
     	panelSouth.add(aboutButton, BorderLayout.EAST);
