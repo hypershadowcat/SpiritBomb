@@ -1,8 +1,6 @@
 package SearchEngine;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
@@ -17,7 +15,7 @@ class MaintenanceWindow extends JFrame {
 	    setSize(700, 500);
 	    setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Destroys itself instead of ending program
 	    setLocationRelativeTo(null);
-        getContentPane().setBackground(new Color(163, 228, 237));
+	    getContentPane().setBackground(new Color(163, 228, 237));
 	    setResizable(false);
 				
 	    // Container for the whole window
@@ -87,25 +85,6 @@ class MaintenanceWindow extends JFrame {
 	    footer.add(new JLabel("Search Engine version 0.0"));
 	    footer.add(Box.createHorizontalStrut(32));
 	    main.add(Box.createVerticalStrut(8));
-	    
-	    // Zack it is your About button (91 - 104 lines)
-	    /*
-	    ActionListener aboutActionListener = new ActionListener() {
-	      
-	    	public void actionPerformed(ActionEvent e) {
-	    		ImageIcon icon = new ImageIcon("src\\main\\java\\search.png");
-	    		JOptionPane.showMessageDialog(null, "Search Engine 0.0\n" + 
-	    				"Model Solution to COP-2805 Search Engine Project\n" + 
-	    				"Written by Craig Anderson, Ihor Panchenko,\n" + 
-	    				"Juliet Don't know last name, and Zachary Willis",
-	    	            "Search Engine", 1, icon);
-	    	   }	
-		};*/
-	   
-		// addFile.addActionListener(aboutActionListener); Commented out until addFile code is written.
-	    
-	    // Should be a method, which invokes by pressing the button "Maintenance" on Search Engine window
-	    setVisible(true);
     }
 }	
 	
