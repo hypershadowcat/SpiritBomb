@@ -120,6 +120,7 @@ public class MainWindow extends JFrame
     		public void actionPerformed(ActionEvent e)
     		{
     	        MaintenanceWindow maintenance = new MaintenanceWindow();
+    	        maintenance.setVisible(true);
     		}
     	});
     	panelSouth.add(maintenanceWindow, BorderLayout.WEST);

@@ -34,7 +34,7 @@ class MaintenanceWindow extends JFrame {
 	    // File Table
 	    Box tableBox = Box.createHorizontalBox();
 	    String columns[] = {"File Name", "Status"}; // created only to see how it appears on the table
-	    DefaultTableModel model = new DefaultTableModel(columns, 10);
+	    DefaultTableModel model = new DefaultTableModel(columns, 30);
 	    JTable fileTable = new JTable(model);
 	    fileTable.getTableHeader().setReorderingAllowed(false);
 	    fileTable.setBackground(new Color(163, 228, 237));
@@ -86,7 +86,7 @@ class MaintenanceWindow extends JFrame {
 	    footer.add(Box.createHorizontalStrut(32));
 	    main.add(Box.createVerticalStrut(8));
 	    
-	    setVisible(true);
+	    //
     }
 }	
 	
