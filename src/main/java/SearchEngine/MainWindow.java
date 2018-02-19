@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 // The main window for the search engine
-// Written by Zachary Willis, 2018
+// Written by Team Spirit Bomb, 2018
 
 public class MainWindow extends JFrame
 {
