@@ -85,6 +85,8 @@ class MaintenanceWindow extends JFrame {
 	    footer.add(new JLabel("Search Engine version 0.0"));
 	    footer.add(Box.createHorizontalStrut(32));
 	    main.add(Box.createVerticalStrut(8));
+	    
+	    setVisible(true);
     }
 }	
 	
