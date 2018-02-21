@@ -4,12 +4,14 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
-class MaintenanceWindow extends JFrame {
-	
+// Written by Craig Anderson, Ihor Panchenko, Juliet Mercado, and Zachary Willis, 2018
+
+class MaintenanceWindow extends JFrame 
+{
 	private static final long serialVersionUID = 1L;
 	
-	public MaintenanceWindow() {
-		
+	public MaintenanceWindow() 
+	{
 	    // Maintenance Window
 	    setTitle("Search Engine Maintenance");
 	    setSize(700, 500);
@@ -85,9 +87,5 @@ class MaintenanceWindow extends JFrame {
 	    footer.add(new JLabel("Search Engine version 0.0"));
 	    footer.add(Box.createHorizontalStrut(32));
 	    main.add(Box.createVerticalStrut(8));
-	    
-	    //
     }
-}	
-	
-	
+}
