@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 // The main window for the search engine
-// Written by Team Spirit Bomb, 2018
+// Written by Ihor Panchenko, Craig Anderson, Zachary Willis, Juliet Mercado, 2018
 
 public class MainWindow extends JFrame
 {
@@ -144,7 +144,7 @@ public class MainWindow extends JFrame
     	//
 	}
 	
-	public static class AboutWindow extends JFrame
+	/* public static class AboutWindow extends JFrame
 	{
 		private static final long serialVersionUID = 1L;
 		private JTextArea aboutText;
@@ -179,7 +179,7 @@ public class MainWindow extends JFrame
 				}
 			});
 		}
-	}
+	} */
 	
     public static void main( String[] args )
     {
