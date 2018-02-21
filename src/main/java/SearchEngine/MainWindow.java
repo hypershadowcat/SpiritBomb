@@ -7,8 +7,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-// The main window for the search engine
-// Written by Ihor Panchenko, Craig Anderson, Zachary Willis, Juliet Mercado, 2018
+// Written by Craig Anderson, Ihor Panchenko, Juliet Mercado, and Zachary Willis, 2018
 
 public class MainWindow extends JFrame
 {
@@ -120,6 +119,7 @@ public class MainWindow extends JFrame
     		public void actionPerformed(ActionEvent e)
     		{
     	        MaintenanceWindow maintenance = new MaintenanceWindow();
+    	        maintenance.setVisible(true);
     		}
     	});
     	panelSouth.add(maintenanceWindow, BorderLayout.WEST);
@@ -134,10 +134,10 @@ public class MainWindow extends JFrame
     			    {
     			    	ImageIcon icon = new ImageIcon("src\\main\\java\\search.png");
     			    	JOptionPane.showMessageDialog(null, "Search Engine 0.0\n" +
-    			    	                                    "Model Solution to COP-2805 Search Engine Project\n" +
-    			    			                            "Written by Craig Anderson, Ihor Panchenko, \n" +
-    			    	                                    "Juliet Mercado, and Zachary Willis",
-    			    	                                    "Search Engine", 1, icon);
+    			    			"Model Solution to COP-2805 Search Engine Project\n" +
+    			    			"Written by Craig Anderson, Ihor Panchenko, \n" +
+    			    			"Juliet Mercado, and Zachary Willis",
+    			    			"Search Engine", 1, icon);
     			    }
     			});
     	panelSouth.add(aboutButton, BorderLayout.EAST);
