@@ -7,7 +7,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-// The main window for the search engine
 // Written by Craig Anderson, Ihor Panchenko, Juliet Mercado, and Zachary Willis, 2018
 
 public class MainWindow extends JFrame
@@ -142,7 +141,45 @@ public class MainWindow extends JFrame
     			    }
     			});
     	panelSouth.add(aboutButton, BorderLayout.EAST);
+    	//
 	}
+	
+	/* public static class AboutWindow extends JFrame
+	{
+		private static final long serialVersionUID = 1L;
+		private JTextArea aboutText;
+		
+		public AboutWindow()
+		{
+		    createView();	
+		    
+		    setDefaultCloseOperation(EXIT_ON_CLOSE);
+	    	setSize(400, 300);
+	    	setLocationRelativeTo(null);
+	    	setTitle("About");
+	    	setResizable(true);
+		}
+		
+		public void createView()
+		{
+			JPanel aboutPanel = new JPanel();
+			getContentPane().add(aboutPanel);
+			
+			aboutText.setText("Search Engine 0.0\n Project for COP-2805C\n Writtey by Team Spirit Bomb\n2018");
+			aboutPanel.add(aboutText);
+		}
+		
+		public static void aboutWindowCreate()
+		{
+			SwingUtilities.invokeLater(new Runnable()
+			{
+				public void run()
+				{
+				new AboutWindow().setVisible(true);
+				}
+			});
+		}
+	} */
 	
     public static void main( String[] args )
     {
