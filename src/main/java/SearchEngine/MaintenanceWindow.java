@@ -1,6 +1,9 @@
 package SearchEngine;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
@@ -70,11 +73,6 @@ class MaintenanceWindow extends JFrame
 	    JButton removeFile = new JButton("Remove Selected Files");
 	    buttonsBox.add(removeFile);
 	    buttonsBox.add(Box.createHorizontalGlue());
-	    
-	    // Reset Window Button
-	    JButton resetWindow = new JButton("Reset Windows");
-	    buttonsBox.add(resetWindow);
-	    buttonsBox.add(Box.createHorizontalGlue());
 
 	    // Container (footer) with number of files and program version
 	    Box footer = Box.createHorizontalBox();
@@ -87,5 +85,15 @@ class MaintenanceWindow extends JFrame
 	    footer.add(new JLabel("Search Engine version 0.0"));
 	    footer.add(Box.createHorizontalStrut(32));
 	    main.add(Box.createVerticalStrut(8));
+	    
+	    // Add file
+	    addFile.addActionListener(new ActionListener() 
+	    {
+	    	public void actionPerformed(ActionEvent e) 
+	    	{
+	    		JFileChooser fileopen = new JFileChooser();
+	    		int ret = fileopen.showDialog(null, "Add file");
+	    	}
+	    });
     }
 }
