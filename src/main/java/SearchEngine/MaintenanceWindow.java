@@ -1,6 +1,8 @@
 package SearchEngine;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
@@ -58,6 +60,15 @@ class MaintenanceWindow extends JFrame
 		
 	    // Add File Button
 	    JButton addFile = new JButton("Add File...");
+	    addFile.addActionListener(new ActionListener()
+	    {
+	        public void actionPerformed(ActionEvent e)
+	    	{
+	    	    ReadFile addFile = new ReadFile();
+	    	    addFile.run();
+	    	}
+	    });
+	    
 	    buttonsBox.add(addFile);
 	    buttonsBox.add(Box.createHorizontalGlue());
 	    
