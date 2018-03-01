@@ -2,6 +2,8 @@ package SearchEngine;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -60,14 +62,19 @@ class MaintenanceWindow extends JFrame
 		
 	    // Add File Button
 	    JButton addFile = new JButton("Add File...");
-	    addFile.addActionListener(new ActionListener()
-	    {
-	        public void actionPerformed(ActionEvent e)
-	    	{
-	    	    ReadFile addFile = new ReadFile();
-	    	    addFile.run();
-	    	}
-	    });
+	    addFile.addActionListener(new ActionListener() // Lists details about the program through a show message dialog
+    			{
+    			    public void actionPerformed(ActionEvent e)
+    			    {
+    			    	ReadFile addFile = new ReadFile();
+    			    	try {
+							addFile.run();
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+    			    }
+    			});
 	    
 	    buttonsBox.add(addFile);
 	    buttonsBox.add(Box.createHorizontalGlue());

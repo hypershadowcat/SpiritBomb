@@ -23,7 +23,7 @@ public class MainWindow extends JFrame
 	private JRadioButton anyTerms;
 	private JRadioButton exactTerms;
 	
-	private JTextArea searchResults;
+	private static JTextArea searchResults;
 	
 	private JButton maintenanceWindow;
 	private JLabel filesIndexed;
@@ -101,11 +101,11 @@ public class MainWindow extends JFrame
     	//
     	
     	// Center
-    	searchResults = new JTextArea();
-    	searchResults.setEditable(false);
-    	searchResults.setLineWrap(true);
-    	searchResults.setWrapStyleWord(true);
-    	JScrollPane scrollPane = new JScrollPane(searchResults); // Creates the searchResults in a scrollable pane
+    	setSearchResults(new JTextArea());
+    	getSearchResults().setEditable(false);
+    	getSearchResults().setLineWrap(true);
+    	getSearchResults().setWrapStyleWord(true);
+    	JScrollPane scrollPane = new JScrollPane(getSearchResults()); // Creates the searchResults in a scrollable pane
     	panelMain.add(scrollPane, BorderLayout.CENTER);
     	//
     	
@@ -191,4 +191,12 @@ public class MainWindow extends JFrame
 		    }
 	    });
     }
+
+	public static JTextArea getSearchResults() {
+		return searchResults;
+	}
+
+	public void setSearchResults(JTextArea searchResults) {
+		this.searchResults = searchResults;
+	}
 }
