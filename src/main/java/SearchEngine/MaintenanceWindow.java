@@ -4,7 +4,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
 // Written by Craig Anderson, Ihor Panchenko, Juliet Mercado, and Zachary Willis, 2018
@@ -38,8 +40,9 @@ class MaintenanceWindow extends JFrame
 	   
 	    // File Table
 	    Box tableBox = Box.createHorizontalBox();
-	    String columns[] = {"File Name", "Status"}; // created only to see how it appears on the table
-	    DefaultTableModel model = new DefaultTableModel(columns, 30);
+	    String columnsName[] = {"File Name", "Status"}; // created only to see how it appears on the table
+	    final DefaultTableModel model = new DefaultTableModel();
+	    model.setColumnIdentifiers(columnsName);
 	    JTable fileTable = new JTable(model);
 	    fileTable.getTableHeader().setReorderingAllowed(false);
 	    fileTable.setBackground(new Color(163, 228, 237));
@@ -86,13 +89,23 @@ class MaintenanceWindow extends JFrame
 	    footer.add(Box.createHorizontalStrut(32));
 	    main.add(Box.createVerticalStrut(8));
 	    
-	    // Add file
+	    // Add file to JTable
 	    addFile.addActionListener(new ActionListener() 
 	    {
 	    	public void actionPerformed(ActionEvent e) 
 	    	{
-	    		JFileChooser fileopen = new JFileChooser();
-	    		int ret = fileopen.showDialog(null, "Add file");
+	    		try {UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());}
+	    		catch(Exception e1) {System.out.println("Unable to load Windows look and feel");}
+	    		FileNameExtensionFilter filter = new FileNameExtensionFilter("Text Files", "txt");
+	    		JFileChooser addFileChooser = new JFileChooser();
+	    		addFileChooser.setFileFilter(filter);
+	    		int status = addFileChooser.showDialog(null, "Add file");
+	    		
+	    		if ( status == JFileChooser.APPROVE_OPTION ) 
+	    		{
+	    			File selectedFile = addFileChooser.getSelectedFile();
+	    			model.addRow(new Object[]{selectedFile.getName(), selectedFile.getParent()});
+	    		}
 	    	}
 	    });
     }
