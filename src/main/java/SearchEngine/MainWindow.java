@@ -23,7 +23,7 @@ public class MainWindow extends JFrame
 	private JRadioButton anyTerms;
 	private JRadioButton exactTerms;
 	
-	private JTextArea searchResults;
+	private static JTextArea searchResults;
 	
 	private JButton maintenanceWindow;
 	private JLabel filesIndexed;
@@ -134,61 +134,34 @@ public class MainWindow extends JFrame
     			    {
     			    	ImageIcon icon = new ImageIcon("src\\main\\java\\search.png");
     			    	JOptionPane.showMessageDialog(null, "Search Engine 0.0\n" +
-    			    			"Model Solution to COP-2805 Search Engine Project\n" +
-    			    			"Written by Craig Anderson, Ihor Panchenko, \n" +
-    			    			"Juliet Mercado, and Zachary Willis",
-    			    			"Search Engine", 1, icon);
+    			    		"Model Solution to COP-2805 Search Engine Project\n" +
+    			    		"Written by Craig Anderson, Ihor Panchenko, \n" +
+    			    		"Juliet Mercado, and Zachary Willis",
+    			    		"Search Engine", 1, icon);
     			    }
     			});
     	panelSouth.add(aboutButton, BorderLayout.EAST);
     	//
 	}
 	
-	/* public static class AboutWindow extends JFrame
+	public static void main( String[] args )
 	{
-		private static final long serialVersionUID = 1L;
-		private JTextArea aboutText;
-		
-		public AboutWindow()
+		SwingUtilities.invokeLater(new Runnable()
 		{
-		    createView();	
-		    
-		    setDefaultCloseOperation(EXIT_ON_CLOSE);
-	    	setSize(400, 300);
-	    	setLocationRelativeTo(null);
-	    	setTitle("About");
-	    	setResizable(true);
-		}
-		
-		public void createView()
-		{
-			JPanel aboutPanel = new JPanel();
-			getContentPane().add(aboutPanel);
-			
-			aboutText.setText("Search Engine 0.0\n Project for COP-2805C\n Writtey by Team Spirit Bomb\n2018");
-			aboutPanel.add(aboutText);
-		}
-		
-		public static void aboutWindowCreate()
-		{
-			SwingUtilities.invokeLater(new Runnable()
-			{
-				public void run()
-				{
-				new AboutWindow().setVisible(true);
-				}
-			});
-		}
-	} */
-	
-    public static void main( String[] args )
-    {
-    	SwingUtilities.invokeLater(new Runnable()
-	    {
 		    public void run()
 		    {
 		    	new MainWindow().setVisible(true);
 		    }
 	    });
-    }
+	}
+
+	public static JTextArea getSearchResults() 
+	{
+		return searchResults;
+	}
+
+	public void setSearchResults(JTextArea searchResults) 
+	{
+		this.searchResults = searchResults;
+	}
 }

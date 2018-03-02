@@ -3,10 +3,8 @@ package SearchEngine;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-
+import java.io.IOException;
 import javax.swing.*;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
 // Written by Craig Anderson, Ihor Panchenko, Juliet Mercado, and Zachary Willis, 2018
@@ -14,6 +12,7 @@ import javax.swing.table.DefaultTableModel;
 class MaintenanceWindow extends JFrame 
 {
 	private static final long serialVersionUID = 1L;
+	private static DefaultTableModel model;
 	
 	public MaintenanceWindow() 
 	{
@@ -41,9 +40,10 @@ class MaintenanceWindow extends JFrame
 	    // File Table
 	    Box tableBox = Box.createHorizontalBox();
 	    String columnsName[] = {"File Name", "Status", "File Path"}; // created only to see how it appears on the table
-	    final DefaultTableModel model = new DefaultTableModel();
-	    model.setColumnIdentifiers(columnsName);
-	    JTable fileTable = new JTable(model);
+	    setModel(new DefaultTableModel());
+	    //DefaultTableModel model = new DefaultTableModel();
+	    getModel().setColumnIdentifiers(columnsName);
+	    JTable fileTable = new JTable(getModel());
 	    fileTable.getTableHeader().setReorderingAllowed(false);
 	    fileTable.setBackground(new Color(163, 228, 237));
 	    fileTable.getTableHeader().setFont(new Font("SansSerif", Font.BOLD, 14));
@@ -94,19 +94,20 @@ class MaintenanceWindow extends JFrame
 	    {
 	    	public void actionPerformed(ActionEvent e) 
 	    	{
-	    		try {UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());}
-	    		catch(Exception e1) {System.out.println("Unable to load Windows look and feel");}
-	    		FileNameExtensionFilter filter = new FileNameExtensionFilter("Text Files", "txt");
-	    		JFileChooser addFileChooser = new JFileChooser();
-	    		addFileChooser.setFileFilter(filter);
-	    		int status = addFileChooser.showDialog(null, "Add file");
-	    		
-	    		if ( status == JFileChooser.APPROVE_OPTION ) 
-	    		{
-	    			File selectedFile = addFileChooser.getSelectedFile();
-	    			model.addRow(new Object[]{selectedFile.getName(), "Indexed", selectedFile.getParent()});
-	    		}
+	    		ReadFile addFile = new ReadFile();
+	    		try {addFile.run();}
+	    		catch (IOException e1) {e1.printStackTrace();}
 	    	}
 	    });
     }
+	
+	public static DefaultTableModel getModel() 
+	{
+		return model;
+	}
+
+	public void setModel(DefaultTableModel model) 
+	{
+		this.model = model;
+	}
 }
