@@ -40,7 +40,7 @@ class MaintenanceWindow extends JFrame
 	   
 	    // File Table
 	    Box tableBox = Box.createHorizontalBox();
-	    String columnsName[] = {"File Name", "Status"}; // created only to see how it appears on the table
+	    String columnsName[] = {"File Name", "Status", "File Path"}; // created only to see how it appears on the table
 	    final DefaultTableModel model = new DefaultTableModel();
 	    model.setColumnIdentifiers(columnsName);
 	    JTable fileTable = new JTable(model);
@@ -104,7 +104,7 @@ class MaintenanceWindow extends JFrame
 	    		if ( status == JFileChooser.APPROVE_OPTION ) 
 	    		{
 	    			File selectedFile = addFileChooser.getSelectedFile();
-	    			model.addRow(new Object[]{selectedFile.getName(), selectedFile.getParent()});
+	    			model.addRow(new Object[]{selectedFile.getName(), "Indexed", selectedFile.getParent()});
 	    		}
 	    	}
 	    });
