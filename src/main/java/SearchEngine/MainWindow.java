@@ -24,7 +24,7 @@ public class MainWindow extends JFrame
 	private JRadioButton exactTerms;
 
 	private static JTextArea searchResults;
-
+  
 	private JButton maintenanceWindow;
 	private JLabel filesIndexed;
 	private JButton aboutButton;
@@ -44,6 +44,7 @@ public class MainWindow extends JFrame
 	private void createView()
 	{
 		JPanel panelMain = new JPanel();
+
 		panelMain.setBorder(new EmptyBorder(10, 10, 10, 10)); // Keeps 10 pixel margins on either side
 		panelMain.setLayout(new BorderLayout()); // Sets it to border layout instead of flow layout
 		getContentPane().add(panelMain);
@@ -115,6 +116,7 @@ public class MainWindow extends JFrame
 
 		maintenanceWindow = new JButton("Maintenance");
 		maintenanceWindow.addActionListener(new ActionListener()
+
 		{
 			public void actionPerformed(ActionEvent e)
 			{
@@ -165,3 +167,4 @@ public class MainWindow extends JFrame
 		this.searchResults = searchResults;
 	}
 }
+
