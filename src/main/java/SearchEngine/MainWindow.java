@@ -33,7 +33,7 @@ public class MainWindow extends JFrame
 	{
 		createView();
 
-		// Make window exit app on close
+		// Make window exit app on close just 
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setSize(800, 600);
 		setLocationRelativeTo(null);
