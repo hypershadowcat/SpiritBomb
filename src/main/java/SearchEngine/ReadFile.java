@@ -6,16 +6,11 @@ import java.util.*;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-class ReadFile 
-{
-	public void run() throws IOException 
-	{
-		try
-		{
+class ReadFile {
+	public void run() throws IOException {
+		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-		}
-		catch (Exception e1)
-		{
+		} catch (Exception e1) {
 			System.out.println("Unable to load Windows look and feel");
 		}
 
@@ -28,44 +23,33 @@ class ReadFile
 		fileSelect.setFileFilter(filter);
 		int status = fileSelect.showDialog(null, "Add file");
 
-		if (status == JFileChooser.APPROVE_OPTION)
-		{
+		if (status == JFileChooser.APPROVE_OPTION) {
 			File selectedFile = fileSelect.getSelectedFile();
 
 			MaintenanceWindow.getModel()
-			.addRow(new Object[] { selectedFile.getName(), "Indexed", selectedFile.getParent() });
+					.addRow(new Object[] { selectedFile.getName(), "Indexed", selectedFile.getParent() });
 
-			try
-			{
+			try {
 				reader = new BufferedReader(new FileReader((selectedFile))); // Reads the file one word at a time
-			}
-			catch (FileNotFoundException e)
-			{
+			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
 
-			try
-			{
+			try {
 				currentLine = reader.readLine();
-			}
-			catch (IOException e)
-			{
+			} catch (IOException e) {
 				e.printStackTrace();
 				currentLine = null;
 			}
 
-			while (currentLine != null)
-			{
-				String[] words = currentLine.toLowerCase().split(" ");
+			while (currentLine != null) {
+				
+				String[] words = currentLine.toLowerCase().split("[^a-zA-Z0-9-]+");
 
-				for (String word : words)
-				{
-					if (wordPositionMap.containsKey(word))
-					{
+				for (String word : words) {
+					if (wordPositionMap.containsKey(word)) {
 						wordPositionMap.put(word, wordPositionMap.get(word) + 1);
-					}
-					else
-					{
+					} else {
 						wordPositionMap.put(word, 1);
 					}
 
