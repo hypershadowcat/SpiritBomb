@@ -71,6 +71,7 @@ class ReadFile {
 
 				currentLine = reader.readLine();
 			}
+			System.out.println(wordPositionMap);
 		}
 	}
 }
