@@ -23,38 +23,51 @@ class ReadFile {
 		fileSelect.setFileFilter(filter);
 		int status = fileSelect.showDialog(null, "Add file");
 
-		if (status == JFileChooser.APPROVE_OPTION) {
+		if (status == JFileChooser.APPROVE_OPTION){
 			File selectedFile = fileSelect.getSelectedFile();
 
 			MaintenanceWindow.getModel()
 					.addRow(new Object[] { selectedFile.getName(), "Indexed", selectedFile.getParent() });
 
-			try {
-				reader = new BufferedReader(new FileReader((selectedFile))); // Reads the file one word at a time
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			}
+			try
+				{	// Reads the file one word at a time
+					reader = new BufferedReader(new FileReader((selectedFile))); 
+				} 
+			catch (FileNotFoundException e)
+				{
+					e.printStackTrace();
+				}
 
-			try {
-				currentLine = reader.readLine();
-			} catch (IOException e) {
-				e.printStackTrace();
-				currentLine = null;
-			}
+			try
+				{
+					currentLine = reader.readLine();
+				} 
+			
+			catch (IOException e)
+				{
+					e.printStackTrace();
+					currentLine = null;
+				}
 
-			while (currentLine != null) {
+			while (currentLine != null) 
+			{
 				
 				String[] words = currentLine.toLowerCase().split("[^a-zA-Z0-9-]+");
 
-				for (String word : words) {
-					if (wordPositionMap.containsKey(word)) {
-						wordPositionMap.put(word, wordPositionMap.get(word) + 1);
-					} else {
-						wordPositionMap.put(word, 1);
-					}
+				for (String word : words)
+					{
+						if (wordPositionMap.containsKey(word))
+							{
+								wordPositionMap.put(word, wordPositionMap.get(word) + 1);
+								
+							} 
+						else
+							{
+								wordPositionMap.put(word, 1);
+							}
 
-					MainWindow.getSearchResults().append(word);
-				}
+						MainWindow.getSearchResults().append(word);
+					}
 
 				currentLine = reader.readLine();
 			}
