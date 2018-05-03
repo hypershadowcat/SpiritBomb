@@ -12,7 +12,7 @@ public class IndexSearch {
 		this.foo = text.length();
 		this.java = pattern.length();
 	}
-	
+	//Search
 	public int search() {
 		for (int i = 0; i < foo-java; i++) {
 			int j = 0;
