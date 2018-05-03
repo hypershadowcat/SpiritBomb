@@ -1,6 +1,6 @@
 package SearchEngine;
 
-public class Index {
+public class IndexSearch {
 	 char[] text;
 	 char[] pattern;
 	 int foo;
